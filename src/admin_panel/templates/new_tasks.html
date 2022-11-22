@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row my-5">
+      <h3 class="text-center display-4">Новая задача на разметку</h3>
+      <form method="POST" enctype="multipart/form-data" action="/home">
+        <div class="mb-3">
+          <h5>Картинки для классификации</h5>
+          <input type="file" multiple required class="form-control" accept=".png, .jpg, .jpeg, .jfif" name="images" value="{{images}}">
+        </div>
+        <div class="mb-3">
+          <h5>Названия классов (через пробел)</h5>
+          <input type="text" required placeholder="Орк Эльф Тролль Огр" name="labels" class="form-control" value="{{labels}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}

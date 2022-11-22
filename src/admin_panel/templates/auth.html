@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  <title>Login</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <h5 class="display-5">Вход в админку</h5>
+      <div class="text-danger font-weight-bold">
+          {% for error in errors %}
+            <li>{{error}}</li>
+          {% endfor %}
+      </div>
+      <div class="text-success font-weight-bold">
+        {% if msg %}
+        <div class="badge bg-success text-wrap font-weight-bold" style="font-size: large;">
+          {{msg}}
+        </div>
+        {% endif %}
+    </div>
+    </div>
+
+    <div class="row my-5">
+      <form method="POST" action="/login">
+        <div class="mb-3">
+          <label>Логин</label>
+          <input type="text" required placeholder="Ваш логин" name="username" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label>Пароль</label>
+          <input type="password" required placeholder="Введите ваш пароль" name="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}
