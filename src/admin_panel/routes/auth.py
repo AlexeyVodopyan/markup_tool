@@ -8,7 +8,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.templating import Jinja2Templates
 from fastapi_login import LoginManager
 from fastapi_login.exceptions import InvalidCredentialsException
-from service.queries import check_user_from_db
+from admin_panel.service.queries import check_user_from_db
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -16,7 +16,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from common.db_settings import Session, get_session
 from common.models import WebUser
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="admin_panel/templates")
 auth_router = APIRouter()
 
 manager = LoginManager(os.environ.get("SECRET"), token_url="/login", use_cookie=True)

@@ -25,7 +25,7 @@ from admin_panel.service.queries import (
 from common.db_settings import get_session
 
 new_task_router = APIRouter(include_in_schema=False)
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="admin_panel/templates")
 ACCEPTED_EXTENSIONS = {"image/png", "image/jpeg"}
 
 

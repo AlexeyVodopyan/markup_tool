@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 # project
 from admin_panel.routes.auth import manager
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="admin_panel/templates")
 base_router = APIRouter()
 
 

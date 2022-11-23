@@ -8,3 +8,21 @@ services:
       - ./data/db:/var/lib/postgresql/data
     env_file:
       - .env
+  bot:
+    container_name: bot
+    build:
+      context: .
+      dockerfile: ./docker/bot.Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./data/images:/home/images
+  web_admin:
+    container_name: web_admin
+    build:
+      context: .
+      dockerfile: ./docker/admin.DockerFile
+    volumes:
+      - ./data/images:/home/images
+    env_file:
+      - .env
