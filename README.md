@@ -12,6 +12,8 @@
 
 * Демо-работы telegram-бота: https://t.me/markup_tool_bot
 * Демо-работы веб-админки: http://45.132.18.86:8000/
+  * login: test_admin
+  * pass: fgaga31245Af
 
 ## Особенности
 
