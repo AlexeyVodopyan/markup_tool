@@ -6,13 +6,21 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 # project
-from common.models import Image, LabelClass, LabeledImage, Task, TaskLabelClass, WebUser
+from common.models import (
+    Image,
+    LabelClass,
+    LabeledImage,
+    Task,
+    TaskLabelClass,
+    TgUser,
+    WebUser,
+)
 
 
 class Statistics(TypedDict):
     total_objects: int
     labeled_objects: int
-    classes: list[dict[str, int]]
+    classes: list[str]
     tasks: int
     tg_users: int
 
@@ -104,16 +112,28 @@ async def check_user_from_db(
 async def get_statistics(
     session: AsyncSession,
 ) -> Statistics:
+    """Запрос простейшей статистики"""
+
     total_obj_query = select([func.count(Image.id)])
     labeled_objects_query = select([func.count(LabeledImage.image_id.distinct())])
-    # classes =
+    classes_query = select(LabelClass.name)
+    tg_users_query = select([func.count(TgUser.login)])
+    tasks_query = select([func.count(Task.id)])
 
     total_objects = await session.execute(total_obj_query)
     labeled_objects = await session.execute(labeled_objects_query)
+    classes = await session.execute(classes_query)
+    tg_users = await session.execute(tg_users_query)
+    tasks = await session.execute(tasks_query)
+
+    classes = [label[0] for label in classes.all()]
 
     result: Statistics = {
         "total_objects": total_objects.scalar(),
         "labeled_objects": labeled_objects.scalar(),
+        "tg_users": tg_users.scalar(),
+        "classes": classes,
+        "tasks": tasks.scalar(),
     }
 
     return result

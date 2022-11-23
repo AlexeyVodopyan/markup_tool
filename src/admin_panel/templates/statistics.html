@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  <title>Статистика</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="display-5 text-center text-danger mb-3">Статистика</h3>
+    </div>
+    <div id="result" class="text-danger text-bold lead"></div>
+  </div>
+
+  <div class="row">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Всего объектов</th>
+            <th scope="col">Размечены (хотя бы одним пользователем)</th>
+            <th scope="col">Всего пользователей</th>
+            <th scope="col">Все классы</th>
+            <th scope="col">Всего задач</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{stat.total_objects}}</th>
+                <td>{{stat.labeled_objects}}</td>
+                <td>{{stat.tg_users}}</td>
+                <td>{{stat.classes}}</td>
+                <td>{{stat.tasks}}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
