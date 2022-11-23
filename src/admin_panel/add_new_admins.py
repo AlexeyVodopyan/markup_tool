@@ -26,5 +26,5 @@ async def main(admins: dict[str, str]) -> None:
 
 
 if __name__ == "__main__":
-    admins = {"admin": "123456"}
+    admins = {"test_admin": "fgaga31245Af"}
     asyncio.run(main(admins))
